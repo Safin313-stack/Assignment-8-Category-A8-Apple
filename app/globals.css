@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "animate.css";
+
+@plugin "daisyui";
+
+:root {
+  --tile-accent: #c9a84c;
+  --tile-bg: #0f0e0a;
+  --tile-surface: #1a1915;
+  --tile-text: #f0ece0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.font-display {
+  font-family: "Playfair Display", "Cormorant Garamond", serif;
+}
+
+.font-body {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tile-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #c9a84c, #f0d080, #c9a84c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
