@@ -8,6 +8,8 @@ A premium tile gallery web application built with Next.js App Router.
 
 A website to showcase a curated tile gallery with authentication, search, and a detailed view for each tile.
 
+Built with modern Next.js App Router patterns and a premium gallery UX.
+
 ## Key Features
 
 - 🏠 Home page — hero banner ("Discover Your Perfect Aesthetic" + "Browse Now"), animated marquee, top 4 featured tiles with SwiperJS carousel
