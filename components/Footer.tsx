@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <span className="font-display text-2xl gold-text font-bold tracking-widest">TileVerse</span>
             <p className="mt-3 text-sm text-[#f0ece0]/50 leading-relaxed max-w-xs">
-              Curating the world's finest tiles for those who believe every surface tells a story.
+              Curating the world&apos;s finest tiles for those who believe every surface tells a story.
             </p>
           </div>
 

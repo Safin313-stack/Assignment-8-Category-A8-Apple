@@ -1,25 +1,49 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import TileCard from "@/components/TileCard";
 import Loader from "@/components/Loader";
 
+interface Tile {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  price: number;
+  currency: string;
+  dimensions: string;
+  material: string;
+  inStock: boolean;
+  tags?: string[];
+}
+
 export default function AllTilesPage() {
-  const [tiles, setTiles] = useState<any[]>([]);
+  const [tiles, setTiles] = useState<Tile[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
+  const fetchTiles = useCallback(() => {
     const url = search
       ? `${process.env.NEXT_PUBLIC_JSON_SERVER_URL}/tiles?title_like=${encodeURIComponent(search)}`
       : `${process.env.NEXT_PUBLIC_JSON_SERVER_URL}/tiles`;
 
-    setLoading(true);
     fetch(url)
       .then((r) => r.json())
-      .then((data) => setTiles(data))
-      .catch(() => setTiles([]))
-      .finally(() => setLoading(false));
+      .then((data: Tile[]) => {
+        setTiles(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setTiles([]);
+        setLoading(false);
+      });
   }, [search]);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(fetchTiles, 0);
+    return () => clearTimeout(timer);
+  }, [fetchTiles]);
 
   return (
     <div className="min-h-screen">
